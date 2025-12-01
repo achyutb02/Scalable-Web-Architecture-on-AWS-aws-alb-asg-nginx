@@ -10,7 +10,7 @@
 ![diagram](screenshots/architecture.png)
 
 ## Launch template user data (Nginx)
-Launch Template user data: [`scripts/user-data.sh`](scripts/user-data.sh)
+Launch Template user data: scripts/user-data.sh
 
 ```bash
 #!/bin/bash
