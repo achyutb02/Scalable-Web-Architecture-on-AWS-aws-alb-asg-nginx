@@ -36,7 +36,7 @@ Prerequisites:
 git clone [https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git](https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git)
 cd Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx
 
-
+```
 
 ![diagram](screenshots/architecture.png)
 
