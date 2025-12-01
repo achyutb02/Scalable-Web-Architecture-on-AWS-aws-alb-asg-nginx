@@ -17,9 +17,7 @@ cd Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx
 ```
 
 
-- AWS Account (Oregon us-west-2 region is used in this guide)
-- IAM Permissions to create EC2, ALB, and ASG resources
-- (Optional) An EC2 Key Pair if you wish to SSH into instances
+
 ![diagram](screenshots/architecture.png)
 
 ## Launch template user data (Nginx)
