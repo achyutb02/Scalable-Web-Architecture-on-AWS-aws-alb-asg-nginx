@@ -36,7 +36,8 @@ terraform apply -auto-approve
 - You should see the Nginx welcome page with the instance ID.
       - For example: my-web-server-template-v1
 
-
+---
+---
 
 
 
