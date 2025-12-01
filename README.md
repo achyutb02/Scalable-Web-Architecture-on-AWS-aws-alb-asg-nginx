@@ -16,6 +16,26 @@ git clone [https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb
 cd Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx
 ```
 
+## 📂 Project Structure
+
+├── main.tf                 # Core infrastructure definition (VPC, ALB, ASG)
+├── variables.tf            # Input variables (Region, CIDR blocks)
+├── outputs.tf              # Output definitions (ALB DNS Name)
+├── scripts/
+│   └── user-data.sh        # Bash script to install Nginx and custom HTML
+└── README.md               # Documentation
+
+## 🚀 Quick Start (Automated Deployment)
+
+Prerequisites:
+- [Terraform installed](https://developer.hashicorp.com/terraform/downloads)
+- AWS CLI configured with appropriate credentials
+
+**1. Clone the repository**
+```bash
+git clone [https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git](https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git)
+cd Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx
+
 
 
 ![diagram](screenshots/architecture.png)
