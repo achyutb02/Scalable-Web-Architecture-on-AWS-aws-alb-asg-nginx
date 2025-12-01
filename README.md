@@ -3,7 +3,7 @@
 > Goal: Deploy an **ALB → Target Group → Auto Scaling Group** that serves **Nginx** instances across **2 AZs** and automatically scales based on **ALB RequestCountPerTarget**.
 
 ### Prerequisites
-- AWS account (N. Virginia `us-east-1` used in this guide)
+- AWS account (N. Virginia `us-west-2` used in this guide)
 - IAM permissions to create EC2/ALB/ASG resources
 - (Optional) EC2 key pair if you want to SSH
 
