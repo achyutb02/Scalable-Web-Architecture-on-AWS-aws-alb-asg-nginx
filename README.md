@@ -48,7 +48,7 @@ terraform destroy -auto-approve
 
 
 
-
+![diagram](screenshots/design.png)
 ![diagram](screenshots/architecture.png)
 
 ## Launch template user data (Nginx)
