@@ -1,3 +1,5 @@
+![diagram](screenshots/design.png)
+
 ## How to Run (Console walkthrough)
 
 > Goal: Deploy an **ALB → Target Group → Auto Scaling Group** that serves **Nginx** instances across **2 AZs** and automatically scales based on **ALB RequestCountPerTarget**.
