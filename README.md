@@ -10,7 +10,7 @@
 ![diagram](screenshots/architecture.png)
 
 ## Launch template user data (Nginx)
-Launch Template user data: 
+User data: 
 ```bash
 #!/bin/bash
 sudo yum update -y
