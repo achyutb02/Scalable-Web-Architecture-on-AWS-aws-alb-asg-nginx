@@ -1,4 +1,3 @@
-![diagram](screenshots/design.png)
 
 ## How to Run (Console walkthrough)
 
