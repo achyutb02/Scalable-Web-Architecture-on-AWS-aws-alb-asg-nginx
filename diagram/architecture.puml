@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam rectangle {
+  BackgroundColor #f6f8fa
+  BorderColor #8a8a8a
+  RoundCorner 8
+}
+title AWS: ALB + Target Group + EC2 Auto Scaling (NGINX)
+
+actor "User" as user
+
+package "VPC" {
+  rectangle "ALB SG\n(inbound 80 from 0.0.0.0/0)" as albsg
+  rectangle "Instance SG\n(inbound 80 from ALB SG)" as websg
+
+  node "Application Load Balancer :80" as alb
+  folder "Target Group\nHTTP :80, health '/'" as tg
+  frame "Auto Scaling Group\nmin=2 desired=2 max=4\nwarmup=60s" as asg {
+    [EC2 #1 : NGINX]
+    [EC2 #2 : NGINX]
+  }
+}
+
+user --> alb : HTTP :80
+alb --> tg : forward
+tg --> asg : register targets
+
+@enduml
