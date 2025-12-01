@@ -31,7 +31,9 @@ terraform apply -auto-approve
 ```
 
 **4. Verify**
+
 Copy the alb_dns_name from the output and paste it into your browser. You should see the Nginx welcome page with the instance ID.
+For example: my-web-server-template-v1
 
 
 
