@@ -3,17 +3,21 @@
 > Goal: Deploy an **ALB → Target Group → Auto Scaling Group** that serves **Nginx** instances across **2 AZs** and automatically scales based on **ALB RequestCountPerTarget**.
 
 ### Prerequisites
-- AWS account (N. Virginia `us-west-2` used in this guide)
-- IAM permissions to create EC2/ALB/ASG resources
-- (Optional) EC2 key pair if you want to SSH
-
+- AWS Account (Oregon us-west-2 region is used in this guide)
+- IAM Permissions to create EC2, ALB, and ASG resources
+- (Optional) An EC2 Key Pair if you wish to SSH into instances
 ![diagram](screenshots/architecture.png)
 
 ## Launch template user data (Nginx)
-User data: 
+This Bash script acts as the User Data configuration for our EC2 launch template. It runs automatically every time a new server spins up to turn a blank Amazon Linux machine into a working web server.
 
-This Bash script acts as the User Data configuration for our EC2 launch template, meaning it runs automatically every time a new server spins up to turn a blank Amazon Linux machine into a working web server. It starts by updating the system and installing Nginx (including logic to handle different Amazon Linux versions), then it securely fetches the server's unique Instance ID using AWS's modern IMDSv2 metadata standard. Finally, it creates a simple HTML landing page that displays this specific Instance ID, which is crucial for testing because it lets us visually confirm that your Load Balancer is successfully rotating traffic between different servers when you refresh your browser.
+It performs three key functions:
 
+1. **Installs Nginx**: Includes logic to handle different Amazon Linux versions (AL2 vs AL2023).
+
+2. **Fetches Metadata (IMDSv2)**: Securely retrieves the server's unique Instance ID using AWS's modern IMDSv2 standard (requiring a session token).
+
+3. **Creates a Custom Index Page**: Displays the Instance ID so we can visually confirm load balancing behavior.
 
 
 ```bash
