@@ -35,6 +35,8 @@ INSTANCE_ID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.2
 # 3. Create the Index Page
 echo "<h1>Hello from Achyut's instance: $INSTANCE_ID </h1>" | sudo tee /usr/share/nginx/html/index.html
 
+```
+
 
 
 
