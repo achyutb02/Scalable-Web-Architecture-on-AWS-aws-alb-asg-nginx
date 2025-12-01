@@ -1,22 +1,37 @@
 #!/bin/bash
-sudo yum update -y
+set -euxo pipefail
 
-# 1. Install Nginx (Logic for AL2 vs AL2023)
-if command -v amazon-linux-extras &> /dev/null; then
-    sudo amazon-linux-extras install nginx1 -y
-else
-    sudo yum install nginx -y
-fi
+# --- Install web server (AL2023 uses dnf) ---
+dnf -y update
+dnf -y install nginx
 
-sudo systemctl enable nginx
-sudo systemctl start nginx
+# --- IMDS helper (uses v2 token if available) ---
+TOKEN="$(curl -sS -X PUT 'http://169.254.169.254/latest/api/token' \
+  -H 'X-aws-ec2-metadata-token-ttl-seconds: 21600' || true)"
 
-# 2. IMDSv2 - The Secure Way to get Metadata
-# Step A: Get a Session Token
-TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+md() {
+  local path="$1"
+  if [ -n "$TOKEN" ]; then
+    curl -sS -H "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254${path}"
+  else
+    curl -sS "http://169.254.169.254${path}"
+  fi
+}
 
-# Step B: Use the Token to get the Instance ID
-INSTANCE_ID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/instance-id)
+INSTANCE_ID="$(md /latest/meta-data/instance-id)"
+AZ="$(md /latest/meta-data/placement/availability-zone)"
+HOSTNAME_FQDN="$(hostname -f || hostname)"
 
-# 3. Create the Index Page
-echo "<h1>Hello from Achyut's instance: $INSTANCE_ID </h1>" | sudo tee /usr/share/nginx/html/index.html
+# --- Simple page that proves which instance served you ---
+cat > /usr/share/nginx/html/index.html <<EOF
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ASG Demo</title></head>
+<body style="font-family:system-ui;max-width:720px;margin:40px auto;">
+  <h1>Hello from $INSTANCE_ID</h1>
+  <p>Hostname: $HOSTNAME_FQDN<br>AZ: $AZ</p>
+</body>
+</html>
+EOF
+
+systemctl enable --now nginx
