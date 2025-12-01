@@ -3,6 +3,19 @@
 > Goal: Deploy an **ALB → Target Group → Auto Scaling Group** that serves **Nginx** instances across **2 AZs** and automatically scales based on **ALB RequestCountPerTarget**.
 
 ### Prerequisites
+
+## 🚀 Quick Start (Automated Deployment)
+
+Prerequisites:
+- [Terraform installed](https://developer.hashicorp.com/terraform/downloads)
+- AWS CLI configured with appropriate credentials
+
+**1. Clone the repository**
+```bash
+git clone [https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git](https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git)
+cd Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx
+
+
 - AWS Account (Oregon us-west-2 region is used in this guide)
 - IAM Permissions to create EC2, ALB, and ASG resources
 - (Optional) An EC2 Key Pair if you wish to SSH into instances
