@@ -1,0 +1,16 @@
+VPC = the land
+
+Subnets = different rooms/floors
+
+Route tables + IGW = the doors and hallways
+
+ALB + EC2 = the actual people inside
+
+Security Groups = the guards at every doorway deciding who can enter and who cannot
+
+
+Internet → ALB → EC2 instance
+
+SGs --> stateful
+
+
