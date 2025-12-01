@@ -10,6 +10,7 @@
 
 ## Launch template user data (Nginx)
 1. The User Data Script
+   
 This Bash script acts as the User Data configuration for our EC2 launch template. It runs automatically every time a new server spins up to turn a blank Amazon Linux machine into a working web server.
 
 It performs three key functions:
