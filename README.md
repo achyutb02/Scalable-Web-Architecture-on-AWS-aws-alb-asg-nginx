@@ -11,6 +11,11 @@
 
 ## Launch template user data (Nginx)
 User data: 
+
+This Bash script acts as the User Data configuration for your EC2 launch template, meaning it runs automatically every time a new server spins up to turn a blank Amazon Linux machine into a working web server. It starts by updating the system and installing Nginx (including logic to handle different Amazon Linux versions), then it securely fetches the server's unique Instance ID using AWS's modern IMDSv2 metadata standard. Finally, it creates a simple HTML landing page that displays this specific Instance ID, which is crucial for testing because it lets you visually confirm that your Load Balancer is successfully rotating traffic between different servers when you refresh your browser.
+
+
+
 ```bash
 #!/bin/bash
 sudo yum update -y
