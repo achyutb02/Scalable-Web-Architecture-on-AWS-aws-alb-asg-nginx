@@ -15,6 +15,28 @@ Prerequisites:
 git clone [https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git](https://github.com/achyutb02/Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx.git)
 cd Scalable-Web-Architecture-on-AWS-aws-alb-asg-nginx
 ```
+**2. Initialize Terraform**
+```bash
+terraform init
+```
+
+**3. Plan the deployment**
+```bash
+terraform plan
+```
+
+**4. Apply the configuration**
+```bash
+terraform apply -auto-approve
+```
+
+**4. Verify**
+Copy the alb_dns_name from the output and paste it into your browser. You should see the Nginx welcome page with the instance ID.
+
+
+
+
+
 
 
 ![diagram](screenshots/architecture.png)
