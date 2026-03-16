@@ -5,7 +5,7 @@
 
 ### Prerequisites
 
-## 🚀 Quick Start (Automated Deployment)
+##  Quick Start (Automated Deployment)
 
 Prerequisites:
 - [Terraform installed](https://developer.hashicorp.com/terraform/downloads)
